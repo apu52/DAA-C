@@ -7,3 +7,6 @@ Here are the Solutions of the Assignment of DAA in C
 3. Quick Sort
 4. Merge Sort
 5. MaxMin using recursion
+
+# DAY 2
+6. Matrix Chain Multiplication
