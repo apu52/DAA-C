@@ -1,53 +1,45 @@
 #include <stdio.h>
+#include <limits.h>
 
-void matrix_chain_multiplication(int arr[], int n) {
-	int i, j, l, k,m, q;
-	printf("ENTER THE SIZE OF THE MATRIX: ");
-	scanf("%d",&m);
-	int min_mul[m+1][m+1];
-	
-	for(i = 1; i < m+1; i++) {
-		for(j = 1; j < m+1; j++) {
-			if (i < j)
-				min_mul[i][j] = 9999999;
-            else
-                min_mul[i][j]=0;
-		}
-	}
-	
-	for(i = 1; i <= n - 1; i++) {
-		min_mul[i][i] = 0;
-	}
-	for(l = 2; l <= n - 1; l++) {
-		for(i = 1; i <= n - l + 1; i++) {
-			j = i + l - 1;
-			min_mul[i][j] = 9999999;
-			for(k = i; k <= j - 1; k++) {
-				q = min_mul[i][k] + min_mul[k + 1][j] + (arr[i - 1] * arr[k] * arr[j]);
-				if (q < min_mul[i][j]) {
-					min_mul[i][j] = q;
-				}
-			}
-		}
-	}
-	
-	for(i = 1; i < m+1; i++) {
-		for(j = 1; j < m+1; j++) {
-			printf("%2d ", min_mul[i][j]);
-		}
-		printf("\n");
-	}
+// Function to find the minimum number of scalar multiplications needed to multiply matrices
+int matrixChainMultiplication(int p[], int n) {
+    int m[n][n];
+    int i, j, k, L, q;
+
+    for (i = 1; i < n; i++)
+        m[i][i] = 0; // Cost is zero when multiplying one matrix
+
+    // L is the chain length.
+    for (L = 2; L < n; L++) {
+        for (i = 1; i < n - L + 1; i++) {
+            j = i + L - 1;
+            m[i][j] = INT_MAX;
+            for (k = i; k <= j - 1; k++) {
+                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
+                if (q < m[i][j])
+                    m[i][j] = q;
+            }
+        }
+    }
+
+    return m[1][n - 1]; // return the minimum number of scalar multiplications
 }
 
-int main(void) {
-	int n;
-	int i;
-	printf("ENTER THE NUMBER OF MATRIX: ");
-	scanf("%d",&n);
-	int arr[n+1];
-	printf("ENTER THE DIMENSIONS OF THE MATRIX: ");
-	for(i=0; i<=n; i++){
-		scanf("%d",&arr[i]);
-	}
-	matrix_chain_multiplication(arr, n+1);
+int main() {
+    int n;
+    printf("Enter the number of matrices: ");
+    scanf("%d", &n);
+
+    int dims[n + 1]; // dimensions of matrices
+    int i;
+    printf("Enter the dimensions of the matrices:\n");
+    for (i = 0; i <= n; i++) {
+        printf("Dimension %d: ", i);
+        scanf("%d", &dims[i]);
+    }
+
+    int minScalars = matrixChainMultiplication(dims, n + 1);
+    printf("Minimum number of scalar multiplications: %d\n", minScalars);
+
+    return 0;
 }
