@@ -10,3 +10,7 @@ Here are the Solutions of the Assignment of DAA in C
 
 # DAY 2
 6. Matrix Chain Multiplication
+
+# DAY 3
+7. FloydWarshall problem
+8. Knapsack I/O Problem 
