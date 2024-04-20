@@ -13,4 +13,8 @@ Here are the Solutions of the Assignment of DAA in C
 
 # DAY 3
 7. FloydWarshall problem
-8. Knapsack I/O Problem 
+8. Knapsack I/O Problem
+
+# DAY 4
+9. Dijkstra's Algorithm
+10. Bellman Ford Algorithm
