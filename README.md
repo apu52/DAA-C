@@ -18,3 +18,9 @@ Here are the Solutions of the Assignment of DAA in C
 # DAY 4
 9. Dijkstra's Algorithm
 10. Bellman Ford Algorithm
+
+# DAY 5
+9. N Queen Problem
+10.Graph Coloring
+11.Fractional Knapsack
+12.Job Sequencing
