@@ -27,3 +27,7 @@ Here are the Solutions of the Assignment of DAA in C
 11.Fractional Knapsack
 
 12.Job Sequencing
+
+# DAY 6
+13. Travelling Salesman Problem
+14. Hamiltonian Problem
